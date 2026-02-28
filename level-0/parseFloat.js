@@ -47,13 +47,23 @@ function parseFloatSimple(str) {
   return hasDigit ? sign * result : NaN;
 }
 
-// tests
-console.log(parseFloatSimple("10.5")); // 10.5
-console.log(parseFloatSimple("-10.5")); // -10.5
-console.log(parseFloatSimple("  +3.14")); // 3.14
-console.log(parseFloatSimple("10px")); // 10
-console.log(parseFloatSimple("abc")); // NaN
-console.log(parseFloatSimple(".5")); // 0.5
-console.log(parseFloatSimple("1.")); // 1
-console.log(parseFloatSimple("")); // NaN
-console.log(parseFloatSimple("   ")); // NaN
+const tests = [
+  "10.5",
+  "-10.5",
+  "  +3.14",
+  "10px",
+  "abc",
+  ".5",
+  "1.",
+  "",
+  "   ",
+];
+
+for (const str of tests) {
+  const custom = parseFloatSimple(str);
+  const native = parseFloat(str);
+
+  console.log(`value: ${str}`);
+  console.log(`custom: ${custom}, native: ${native}`);
+  console.log("---");
+}

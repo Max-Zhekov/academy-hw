@@ -36,15 +36,25 @@ function parseInteger(str) {
   return sign * result;
 }
 
-// tests
-console.log(parseInteger("10")); // 10
-console.log(parseInteger("-10")); // -10
-console.log(parseInteger("+10")); // 10
-console.log(parseInteger("   12")); // 12
-console.log(parseInteger("10px")); // 10
-console.log(parseInteger("  -7abc")); // -7
-console.log(parseInteger("abc")); // NaN
-console.log(parseInteger("   ")); // NaN
-console.log(parseInteger("")); // NaN
-console.log(parseInteger("-")); // NaN
-console.log(parseInteger("+")); // NaN
+const tests = [
+  "10",
+  "-10",
+  "+10",
+  "   12",
+  "10px",
+  "  -7abc",
+  "abc",
+  "   ",
+  "",
+  "-",
+  "+",
+];
+
+for (const str of tests) {
+  const custom = parseInteger(str);
+  const native = parseInt(str);
+
+  console.log(`value: ${str}`);
+  console.log(`custom: ${custom}, native: ${native}`);
+  console.log("---");
+}
