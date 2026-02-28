@@ -24,12 +24,21 @@ function includes(text, matchStr, index = 0) {
   return false;
 }
 
-// tests
-console.log(includes("hello world", "world", 0)); // true
-console.log(includes("hello world", "world", 7)); // false
-console.log(includes("hello world", "", 5)); // true
-console.log(includes("hello world", "lo", 0)); // true
-console.log(includes("hello world", "lo", 4)); // false
-console.log(includes("abc", "abcd", 0)); // false
-console.log(includes("abc", "a", -10)); // true
-console.log(includes("abc", "a", 10)); // false
+const tests = [
+  ["hello world", "world", 0],
+  ["hello world", "world", 7],
+  ["hello world", "", 5],
+  ["hello world", "lo", 0],
+  ["hello world", "lo", 4],
+  ["abc", "abcd", 0],
+  ["abc", "a", -10],
+  ["abc", "a", 10],
+];
+
+for (const [text, matchStr, index] of tests) {
+  const custom = includes(text, matchStr, index);
+  const native = text.includes(matchStr, index);
+  console.log(`text: "${text}", match: "${matchStr}", index: ${index}`);
+  console.log(`custom: ${custom}, native: ${native}`);
+  console.log("---");
+}
